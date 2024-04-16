@@ -1,0 +1,9 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "semi": ["warn", "always"],
+    "no-multiple-empty-lines": ["warn", { "max": 1, "maxEOF": 0 }],
+    "quotes": ["warn", "single"],
+    "max-len": ["warn", { "code": 145, "ignoreUrls": true }]
+  }
+}

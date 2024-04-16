@@ -1,0 +1,105 @@
+:root {
+  --app-color: #002242;
+  --off-white: #ffffffb8;
+  --blueish: #d9e2ffd8;
+  --pink: #f77486;
+  --hot-pink: #e95241;
+  --lime: #85bc3c;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--app-color);
+}
+
+.body,
+.wrapper {
+  /* Break the flow */
+  position: absolute;
+  top: 0px;
+
+  /* Give them all the available space */
+  width: 100%;
+  height: 100%;
+
+  /* Remove the margins if any */
+  margin: 0;
+
+  overflow: hidden;
+}
+
+.body {
+  /* Sending body at the bottom of the stack */
+  z-index: 1;
+}
+
+.wrapper {
+  /* Making the wrapper stack above the body */
+  z-index: 2;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url(./Fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url(./Fonts/RobotoCondensed-Medium.ttf);
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(./Fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: Onacona;
+  src: url(./Fonts/Onacona.ttf);
+}
+
+@font-face {
+  font-family: Radhiumz;
+  src: url(./Fonts/NcsRadhiumz.ttf);
+}
+
+.root-scroll {
+  display: grid;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.root-scroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.root-scroll::-webkit-scrollbar-thumb:hover {
+  background: #fff5;
+}
+
+.root-scroll::-webkit-scrollbar-thumb {
+  background: #fff4;
+  border-radius: 10px;
+}
+
+/* .root-scroll::-webkit-scrollbar-track {
+  background: #fff2;
+} */
+
+.root-scroll::-webkit-scrollbar-track:hover {
+  background: #ffffff05;
+}
+
+.root-scroll-mobile::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.root-scroll-mobile::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+}
