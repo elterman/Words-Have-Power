@@ -45,7 +45,7 @@
   53%,
   57%,
   100% {
-    text-shadow: 0 0 4px #fff, 0 0 10px #fff, 0 0 18px #fff, 0 0 38px var(--pink),
+    text-shadow: 0 0 4px #FFF, 0 0 10px #FFF, 0 0 18px #FFF, 0 0 38px var(--pink),
       0 0 73px var(--pink), 0 0 80px var(--pink);
   }
   20%,
@@ -73,7 +73,7 @@
 .option-icon {
   font-family: Onacona;
   font-size: 70px;
-  color: #24adf4;
+  color: #24ADF4;
   filter: drop-shadow(0 5px 5px #000000);
   display: grid;
   padding: 20px;
@@ -82,7 +82,7 @@
 }
 
 .option-icon:hover {
-  filter: drop-shadow(0 0 20px #ffffffa0);
+  filter: drop-shadow(0 0 20px #FFFFFFA0);
 }
 
 .help {
@@ -147,7 +147,7 @@
 }
 
 .tool-button:hover {
-  filter: drop-shadow(0 0 10px #ffffffa0);
+  filter: drop-shadow(0 0 10px #FFFFFFA0);
 }
 
 .keybaord-and-prompts {
@@ -182,7 +182,7 @@
   width: 36px;
   height: 56px;
   font-size: 20px;
-  background: #ffffff40;
+  background: #FFFFFF40;
   border-radius: 4px;
   cursor: pointer;
   box-sizing: border-box;
@@ -245,7 +245,7 @@
 }
 
 .prompt-button:hover {
-  background: -webkit-linear-gradient(-90deg, #fff -400%, #000000C0 70%);
+  background: -webkit-linear-gradient(-90deg, #FFF -400%, #000000F0 70%);
 }
 
 .player-panel {
@@ -261,7 +261,7 @@
 }
 
 .player:hover {
-  filter: drop-shadow(0 0 20px #ffffffa0);
+  filter: drop-shadow(0 0 20px #FFFFFFA0);
 }
 
 .score-panel {
@@ -303,12 +303,12 @@
   justify-items: center;
   font-family: Onacona;
   font-size: 42px;
-  color: #b8af8f;
+  color: #B8AF8F;
   margin: 0 8px;
 }
 
 .gradient-gold {
-  background: -webkit-linear-gradient(-90deg, #ede2c5, #b6a678 50%);
+  background: -webkit-linear-gradient(-90deg, #EDE2C5, #B6A678 50%);
 }
 
 .gradient-green {
@@ -351,7 +351,7 @@
   font-family: "Roboto Condensed";
   align-content: start;
   gap: 3px;
-  border: 2px solid #2c3950;
+  border: 2px solid #2C3950;
   margin-top: 10px;
   padding: 13px 20px 13px 15px;
   box-sizing: border-box;
@@ -443,7 +443,7 @@
 .ro-settings {
   grid-area: 1/1;
   place-self: end center;
-  color: #ffe4ad;
+  color: #FFE4AD;
 }
 
 .electric,
