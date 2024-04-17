@@ -373,6 +373,7 @@
   background: #00000090;
   height: 100%;
   transform: scale(1.05, 1.05);
+  display: grid;
 }
 
 .define {
@@ -442,7 +443,6 @@
 .ro-settings {
   grid-area: 1/1;
   place-self: end center;
-  color: #78a6b6;
   color: #ffe4ad;
 }
 

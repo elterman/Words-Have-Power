@@ -30,19 +30,20 @@ const Settings = () => {
     };
 
     const style = on => ({ opacity: on ? 1 : 0.5, pointerEvents: on ? 'none' : 'all' });
+    const gradGold = 'gradient-gold gradient-text';
 
     return <>
         <div className="settings">
             <span className='settings-headers'>units of power needed to win</span>
             <div className='sub-settings'>
-                {_.map(P2W, p => <ToolButton key={p} text={p} grayscale={p !== p2w} classes={p === p2w ? 'gradient-gold gradient-text' : ''}
+                {_.map(P2W, p => <ToolButton key={p} text={p} grayscale={p !== p2w} classes={p === p2w ? gradGold : ''}
                     style={{ ...style(p === p2w) }} onClick={() => setP2W(p)} />)}
             </div>
             <div className='settings-divider' />
             <span className='settings-headers'>penalty for introducing new letters</span>
             <div className='sub-settings'>
                 {_.map([true, false], p => <ToolButton key={p} text={p ? 'yes' : 'no'} grayscale={p !== penalty}
-                    classes={p === penalty ? 'gradient-gold gradient-text' : ''}
+                    classes={p === penalty ? gradGold : ''}
                     style={{ ...style(p === penalty) }} onClick={() => setPenalty(p)} />)}
             </div>
 
@@ -50,7 +51,7 @@ const Settings = () => {
             <span className='settings-headers'>number of letters in the initial se-quence that must be different in the previous word</span>
             <div className='sub-settings'>
                 {_.map([0, 1, 2, 3], count => <ToolButton key={count} text={count} grayscale={count !== unrepeatCount}
-                    classes={count === unrepeatCount ? 'gradient-gold gradient-text' : ''}
+                    classes={count === unrepeatCount ? gradGold : ''}
                     style={{ ...style(count === unrepeatCount) }} onClick={() => setUnrepeatCount(count)} />)}
             </div>
 
@@ -58,7 +59,7 @@ const Settings = () => {
             <span className='settings-headers'>number of keys to blacklist</span>
             <div className='sub-settings'>
                 {_.map([0, 1, 2, 3], count => <ToolButton key={count} text={count} grayscale={count !== blacks}
-                    classes={count === blacks ? 'gradient-gold gradient-text' : ''}
+                    classes={count === blacks ? gradGold : ''}
                     style={{ ...style(count === blacks) }} onClick={() => onSetBlacklist(count)} />)}
             </div>
             {false && <>
@@ -66,7 +67,7 @@ const Settings = () => {
                 <span className='settings-headers'>AI's dictionary</span>
                 <div className='sub-settings'>
                     {_.map([LIMITED, FULL], size => <ToolButton key={size} text={size} grayscale={size === dictSize ? 0 : 1}
-                        classes={size === dictSize ? 'gradient-gold gradient-text' : ''}
+                        classes={size === dictSize ? gradGold : ''}
                         style={{ ...style(size === dictSize) }} onClick={() => setDictSize(size)} />)}
                 </div>
             </>}
