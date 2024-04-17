@@ -1,4 +1,7 @@
 import Back from './PNG/Back.png';
+import ChargeGreen from './PNG/Battery Charge Green.png';
+import ChargeRed from './PNG/Battery Charge Red.png';
+import Battery from './PNG/Battery.png';
 import Erase from './PNG/Erase.png';
 import Example from './PNG/Example.png';
 import Glasses from './PNG/Glasses.png';
@@ -33,6 +36,9 @@ const Preloader = (props) => {
         {p === START_PAGE && <img className='dummy' src={Robot} alt='' />}
         {p === START_PAGE && <img className='dummy' src={Glasses} alt='' />}
         {p === START_PAGE && <img className='dummy' src={RobotEyes} alt='' />}
+        {p === START_PAGE && <img className='dummy' src={Battery} alt='' />}
+        {p === START_PAGE && <img className='dummy' src={ChargeGreen} alt='' />}
+        {p === START_PAGE && <img className='dummy' src={ChargeRed} alt='' />}
         {p === START_PAGE && <img className='dummy' src={Erase} alt='' />}
         {p === START_PAGE && <img className='dummy' src={Restart} alt='' />}
         {p === START_PAGE && <img className='dummy' src={Settings} alt='' />}
