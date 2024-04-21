@@ -237,6 +237,26 @@ export const a_robo_move = atom(get => {
 
 export const a_prompt_visible = atom(get => get(a_over) || get(a_restart) || get(a_resume));
 
+export const a_page_base = atom(START_PAGE);
+
+export const a_page = atom(
+    get => get(a_page_base),
+
+    (get, set, page) => {
+        set(a_page_base, page);
+
+        if (page !== GAME_PAGE) {
+            return;
+        }
+
+        const dict = [..._2, ..._3, ..._4, ..._5, ..._6, ..._7, ..._8, ..._9, ..._10, ..._11, ..._12, ..._13, ..._14, ..._15];
+        set(a_full_dict, dict);
+        set(a_small_dict, _10000);
+
+        set(a_init);
+    }
+);
+
 export const a_init = atom(null,
     (get, set, force) => {
         set(a_input, '');
@@ -256,25 +276,5 @@ export const a_init = atom(null,
         if (get(a_mode) === MODE_ROBOT && get(a_turn) === 2) {
             set(a_resume, true);
         }
-    }
-);
-
-export const a_page_base = atom(START_PAGE);
-
-export const a_page = atom(
-    get => get(a_page_base),
-
-    (get, set, page) => {
-        set(a_page_base, page);
-
-        if (page !== GAME_PAGE) {
-            return;
-        }
-
-        const dict = [..._2, ..._3, ..._4, ..._5, ..._6, ..._7, ..._8, ..._9, ..._10, ..._11, ..._12, ..._13, ..._14, ..._15];
-        set(a_full_dict, dict);
-        set(a_small_dict, _10000);
-
-        set(a_init);
     }
 );
