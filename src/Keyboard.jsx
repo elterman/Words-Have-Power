@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import _ from 'lodash';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Erase from './PNG/Erase.png';
-import { a_blacklist, a_erasing, a_input, a_kb_scale, a_over, a_prompt_visible, a_robo_move } from './atoms';
+import { a_blacklist, a_blacklist_size, a_erasing, a_error, a_input, a_kb_scale, a_over, a_prompt_visible, a_robo_move } from './atoms';
 import { BACKSPACE, RETURN } from './const';
 import useKeyboard from './useKeyboard';
 import useLongPress from './useLongPress';
@@ -17,7 +17,10 @@ const Keyboard = () => {
     const [kbScale] = useAtom(a_kb_scale);
     const [erasing, setErasing] = useAtom(a_erasing);
     const [blacklist] = useAtom(a_blacklist);
+    const [blacklistSize] = useAtom(a_blacklist_size);
     const [over] = useAtom(a_over);
+    const [error] = useAtom(a_error);
+    const [blacking, setBlacking] = useState(true);
 
     useEffect(() => {
         if (!erasing) {
@@ -31,6 +34,24 @@ const Keyboard = () => {
 
         defer(() => processKey(BACKSPACE), 50);
     }, [erasing, input.length, processKey, setErasing]);
+
+    useEffect(() => {
+        if (blacklistSize === 0 || !error || !error.includes('lacklisted')) {
+            return;
+        }
+
+        const blink = count => {
+            if (count-- === 0) {
+                setBlacking(true);
+                return;
+            }
+
+            setBlacking(on => !on);
+            defer(() => blink(count), 300);
+        };
+
+        defer(() => blink(5), 1000);
+    }, [blacklistSize, error]);
 
     const KeyboardButton = (props) => {
         const { ch } = props;
@@ -58,7 +79,7 @@ const Keyboard = () => {
         const width = cr ? 100 / kbScale : bs ? 60 : 36;
 
         return <div className={classes} style={{ width }} {...handlers}>
-            {black && <span className='kb-black' />}
+            {black && blacking && <span className='kb-black' />}
             {roboMove || !promptVisible ? <span style={{ opacity, zIndex: 1, ...style }}>{label}</span> :
                 <motion.span initial={{ opacity: 1.2 - opacity }} animate={{ opacity }} style={{ ...style }}>{label}</motion.span>}
         </div>;
