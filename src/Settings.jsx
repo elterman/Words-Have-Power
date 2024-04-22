@@ -2,21 +2,21 @@ import { motion } from 'framer-motion';
 import { useAtom } from 'jotai';
 import _ from 'lodash';
 import ToolButton from './Tool Button';
-import { a_blacklist, a_penalty, a_points_to_win, a_unrepeat_count, a_dict_size, a_robo_move, a_entries } from './atoms';
+import { a_blacklist, a_penalty, a_points_to_win, a_unrepeat_count, a_dict_size, a_robo_move, a_entries, a_blacklist_size } from './atoms';
 import { ALPHABET, FULL, LIMITED, P2W } from './const';
 
 const Settings = () => {
     const [p2w, setP2W] = useAtom(a_points_to_win);
     const [penalty, setPenalty] = useAtom(a_penalty);
     const [unrepeatCount, setUnrepeatCount] = useAtom(a_unrepeat_count);
-    const [blacklist, setBlacklist] = useAtom(a_blacklist);
+    const [blacklistSize, setBlacklistSize] = useAtom(a_blacklist_size);
+    const [, setBlacklist] = useAtom(a_blacklist);
     const [dictSize, setDictSize] = useAtom(a_dict_size);
     const [roboMove] = useAtom(a_robo_move);
     const [entries] = useAtom(a_entries);
 
-    const blacks = blacklist.length;
-
     const onSetBlacklist = (count) => {
+        setBlacklistSize(count);
         const blist = _.sampleSize(ALPHABET, count);
         setBlacklist(blist);
     };
@@ -58,9 +58,9 @@ const Settings = () => {
             <div className='settings-divider' />
             <span className='settings-headers'>number of keys to blacklist</span>
             <div className='sub-settings'>
-                {_.map([0, 1, 2, 3], count => <ToolButton key={count} text={count} grayscale={count !== blacks}
-                    classes={count === blacks ? gradGold : ''}
-                    style={{ ...style(count === blacks) }} onClick={() => onSetBlacklist(count)} />)}
+                {_.map([0, 1, 2, 3], count => <ToolButton key={count} text={count} grayscale={count !== blacklistSize}
+                    classes={count === blacklistSize ? gradGold : ''}
+                    style={{ ...style(count === blacklistSize) }} onClick={() => onSetBlacklist(count)} />)}
             </div>
             {false && <>
                 <div className='settings-divider' />
