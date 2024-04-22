@@ -1,7 +1,7 @@
-/* eslint-disable max-len */
 import _ from 'lodash';
+/* eslint-disable max-len */
 import Example from './PNG/Example.png';
-import { MAX_WORD_LENGTH, P2W_DEFAULT } from './const';
+import { GOLD, BLUEISH, MAX_WORD_LENGTH, P2W_DEFAULT } from './const';
 import { scrollClass, tapOrClick } from './utils';
 
 const Help = () => {
@@ -12,12 +12,13 @@ const Help = () => {
         'The game begins with a randomly chosen 4-letter word.',
         <div className='help-ob'>Example:</div>,
         <img className='help-ob' style={{ margin: '-10px 0 5px 0' }} src={Example} alt='example' width={360} />,
-        `The game ends when a player's battery reaches a set charge (${P2W_DEFAULT} units by default). If that player started the game, the opponent takes one more turn.`,
-        'The player with the higher battery charge wins.',
-        'Optional: a word cannot start with the same sequence of up to 3 letters as the previous word.',
-        'Optional: up to 3 randomly chosen letters on the keyboard can be "blacklisted" (made unplayable) on each turn.',
-        'Words cannot be reused.',
+        `The game ends when a player's battery reaches a set charge (${P2W_DEFAULT} units by default). •If that player started the game, the opponent takes one more turn.•`,
         `To make a player go first, ${tapOrClick(true)} on their icon at the start of the game.`,
+        'The player with the higher battery charge wins.',
+        <div className='help-ob' style={{ color: GOLD }}>Optional, but enabled by default:</div>,
+        ' Two randomly chosen letters on the keyboard are "blacklisted" (made unplayable) on each turn.',
+        ' A word cannot start with the same three letters as the previous word.',
+        'Words cannot be reused.',
         `${tapOrClick()} on a word to look up its definition.`
     ];
 
@@ -25,10 +26,20 @@ const Help = () => {
         const { item } = props;
         const str = _.isString(item);
 
+        const renderItem = () => {
+            if (!str) {
+                return item;
+            }
+
+            const runs = _.split(item, '•');
+
+            return <span>{_.map(runs, (run, i) => <span key={i} style={{ color: `${i % 2 ? GOLD : BLUEISH}` }}>{run}</span>)}</span>;
+        };
+
         return <div className='help-item'>
             {str && item.startsWith(' ') && <span className='bullet'>&nbsp;&nbsp;&nbsp;&nbsp;</span>}
             {str && <div className='bullet'>●&nbsp;&nbsp;</div>}
-            {item}
+            {renderItem()}
         </div>;
     };
 
