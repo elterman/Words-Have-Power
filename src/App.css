@@ -316,10 +316,6 @@
   background: -webkit-linear-gradient(-90deg, #56bf8b60, #56bf8b 50%);
 }
 
-.gradient-pink {
-  background: -webkit-linear-gradient(-90deg, #f77486, #f77486b0 50%);
-}
-
 .gradient-text {
   background-clip: text;
   -webkit-background-clip: text;
