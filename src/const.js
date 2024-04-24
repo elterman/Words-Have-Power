@@ -1,6 +1,6 @@
 export const X = '✖';
 export const UNDERSCORE = '_';
-export const APP_STATE = 'WHP V1';
+export const APP_STATE = 'WHP V2';
 export const APP_COLOR = '#2C3950';
 export const BOARD_SIZE = 400;
 export const PAGE_HEIGHT = 840;

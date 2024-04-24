@@ -7,7 +7,6 @@ const SvgX = ({ style = {}, width, color = 'white', viewBox = '0 0 100 100' }) =
         <path stroke={color} strokeWidth="6" fill="none" strokeLinejoin="round" d="M36,36 L64,64 M36,64 L64,36" />
       </g>
     </svg>
-
   );
 };
 
