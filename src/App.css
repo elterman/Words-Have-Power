@@ -280,6 +280,7 @@
 .charge {
   grid-area: 1/1;
   margin-left: 5px;
+  margin-left: 3px;
 }
 
 .score {

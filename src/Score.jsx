@@ -38,7 +38,7 @@ const Score = (props) => {
     const renderCharge = () => {
         let p = Math.round(currentScore);
         p = Math.max(0, Math.min(p, p2w));
-        const charge = p / p2w * 76;
+        const charge = p / p2w * 81;
 
         return <img className='charge' src={player === 1 ? Charge1 : Charge2} alt='charge' width={charge} height={29} />;
     };
