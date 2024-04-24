@@ -2,7 +2,7 @@ import { useAtom } from 'jotai';
 import _ from 'lodash';
 import { useCallback, useEffect, useState } from 'react';
 // eslint-disable-next-line max-len
-import { a_animate_scores, a_blacklist, a_full_dict, a_entries, a_error, a_flip, a_input, a_mode, a_over, a_overlay, a_penalty, a_points_to_win, a_restart, a_resume, a_robo_move, a_tile_feedback, a_turn, a_unrepeat_count } from './atoms';
+import { a_animate_scores, a_blacklist, a_full_dict, a_entries, a_error, a_flip, a_input, a_mode, a_over, a_overlay, a_penalty, a_points_to_win, a_restart, a_resume, a_robo_move, a_tile_feedback, a_turn, a_unrepeat_count, a_first_time } from './atoms';
 // eslint-disable-next-line max-len
 import { BACKSPACE, ERR_BEEN_USED, ERR_BLACKLISTED, ERR_BLACKLISTED_LETTER, ERR_MUST_START_DIFFERENT, ERR_NOT_IN_DICT, ERR_NO_FIRST_LETTER_REPEAT, MODE_ROBOT, RETURN } from './const';
 import { usePlaySound } from './usePlaySound';
@@ -29,6 +29,7 @@ const useKeyboard = () => {
     const [unrepeatCount] = useAtom(a_unrepeat_count);
     const [, setAnimateScores] = useAtom(a_animate_scores);
     const [blacklist] = useAtom(a_blacklist);
+    const [, setFirstTime] = useAtom(a_first_time);
 
     const checkOver = useCallback((regain = false) => {
         if (regain) {
@@ -161,6 +162,7 @@ const useKeyboard = () => {
             entries.push({ word: _input, gain, indexes, player: turn });
             setEntries([...entries]);
             setTurn(3 - turn);
+            setFirstTime(false);
 
             checkOver();
 

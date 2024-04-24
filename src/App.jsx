@@ -3,17 +3,17 @@ import { useAtom } from 'jotai';
 import _ from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
+import GamePage from './Game Page';
 import Overlay from './Overlay';
 import BMG from './PNG/BMG.png';
 import Pattern from './PNG/Pattern.png';
+import Preloader from './Preloader';
 import StartPage from './Start Page';
 import { a_app_state, a_kb_scale, a_overlay, a_page, a_tile_feedback } from './atoms';
 import { APP_STATE, BOARD_SIZE, GAME_PAGE, PAGE_HEIGHT, PAGE_WIDTH, START_PAGE } from './const';
-import { defer, focusOnApp, isOnMobile, windowSize } from './utils';
-import GamePage from './Game Page';
-import { useSwitchPlayer } from './useSwitchPlayer';
 import useKeyboard from './useKeyboard';
-import Preloader from './Preloader';
+import { useSwitchPlayer } from './useSwitchPlayer';
+import { defer, focusOnApp, isOnMobile, windowSize } from './utils';
 
 const App = () => {
     const _this = useRef(null);
@@ -107,7 +107,7 @@ const App = () => {
                 return appState;
             }
 
-            return { sounds: true, states: {} };
+            return { first_time: true, sounds: true, states: {} };
         };
 
         _.delay(() => {

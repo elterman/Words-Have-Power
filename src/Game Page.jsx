@@ -5,15 +5,16 @@ import { useCallback, useEffect } from 'react';
 import Board from './Board';
 import Instructions from './Instructions';
 import Keyboard from './Keyboard';
+import SwitchCallout from './PNG/Switch Callout.png';
 import PlayerPanel from './Player Panel';
 import Prompts from './Prompts';
 import Toolbar from './Toolbar';
 // eslint-disable-next-line max-len
-import { a_blacklist, a_dict_size, a_entries, a_full_dict, a_input, a_over, a_overlay, a_penalty, a_points_to_win, a_resume, a_robo_entry, a_robo_move, a_small_dict, a_tile_feedback, a_unrepeat_count } from './atoms';
+import { a_blacklist, a_dict_size, a_entries, a_first_time, a_full_dict, a_input, a_over, a_overlay, a_penalty, a_points_to_win, a_resume, a_robo_entry, a_robo_move, a_small_dict, a_tile_feedback, a_unrepeat_count } from './atoms';
 import { FULL } from './const';
 import useKeyboard from './useKeyboard';
 import { usePlaySound } from './usePlaySound';
-import { calcGain, calcScore, defer, sameSeq } from './utils';
+import { calcGain, calcScore, defer, sameSeq, tapOrClick } from './utils';
 
 const GamePage = () => {
     const [over] = useAtom(a_over);
@@ -33,6 +34,7 @@ const GamePage = () => {
     const [unrepeatCount] = useAtom(a_unrepeat_count);
     const [blacklist] = useAtom(a_blacklist);
     const [p2w] = useAtom(a_points_to_win);
+    const [firstTime, setFirstTime] = useAtom(a_first_time);
 
     const type = useCallback((i) => {
         if (i > roboEntry.length) {
@@ -94,9 +96,22 @@ const GamePage = () => {
         defer(() => setRoboEntry(word), 500);
     }, [smallDict, entries, over, resume, roboEntry, roboMove, setRoboEntry, unrepeatCount, blacklist, dictSize, fullDict, p2w, penalty]);
 
+    const renderSwitchPrompt = () => {
+        const pointerEvents = firstTime ? 'all' : 'none';
+
+        return <motion.div className='switch-prompt'
+            animate={{ opacity: firstTime ? 1 : 0 }} transition={{ delay: firstTime ? 1 : 0 }}>
+            <img src={SwitchCallout} alt='switch prompt' style={{ gridArea: '1/1' }} />
+            <div className='switch-prompt-interactive' style={{ pointerEvents }} onClick={() => setFirstTime(false)}>
+                {`${tapOrClick()} a player icon     to make them go first.`}
+            </div>
+        </motion.div>;
+    };
+
     return <motion.div className="page game-page" initial={{ opacity: 0 }} animate={{ opacity: overlay ? 0 : 1 }}>
         <PlayerPanel />
         <Board />
+        {renderSwitchPrompt()}
         <Instructions />
         <div className='keybaord-and-prompts'>
             <Keyboard />

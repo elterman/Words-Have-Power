@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { a_entries, a_input, a_mode, a_resume, a_turn } from './atoms';
+import { a_entries, a_first_time, a_input, a_mode, a_resume, a_turn } from './atoms';
 import { MODE_ROBOT } from './const';
 import { usePlaySound } from './usePlaySound';
 
@@ -8,6 +8,7 @@ export const useSwitchPlayer = () => {
     const [resume] = useAtom(a_resume);
     const [entries] = useAtom(a_entries);
     const [, setInput] = useAtom(a_input);
+    const [, setFirstTime] = useAtom(a_first_time);
     const [turn, setTurn] = useAtom(a_turn);
     const playSound = usePlaySound();
 
@@ -31,6 +32,7 @@ export const useSwitchPlayer = () => {
         playSound('oops', { rate: 2 });
         setInput('');
         setTurn(3 - turn);
+        setFirstTime(false);
     };
 
     return { canSwitchPlayer, switchPlayer };

@@ -45,7 +45,7 @@ export const a_app_state = atom(
         set(a_app_state_base, appState);
 
         const json = JSON.stringify(appState, [...STATES, 'sounds', 'states', 'entries', 'word', 'gain', 'indexes', 'player', 'turn',
-            'settings', 'points_to_win', 'penalty', 'unrepeat_count', 'blacklist_size', 'dict_size', 'blacklist', 'over']);
+            'settings', 'points_to_win', 'penalty', 'unrepeat_count', 'blacklist_size', 'dict_size', 'blacklist', 'over', 'first_time']);
 
         localStorage.setItem(APP_STATE, json);
     }
@@ -91,9 +91,17 @@ export const a_state = atom(
 export const a_sounds = atom(
     get => {
         const on = get(a_app_state).sounds;
-        return on === false ? false : true;
+        return on !== false;
     },
     (get, set, sounds) => set(a_app_state, { ...get(a_app_state), sounds })
+);
+
+export const a_first_time = atom(
+    get => {
+        const first_time = get(a_app_state).first_time;
+        return first_time !== false;
+    },
+    (get, set, first_time) => set(a_app_state, { ...get(a_app_state), first_time })
 );
 
 export const a_settings = atom(
