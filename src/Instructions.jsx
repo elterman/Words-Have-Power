@@ -18,8 +18,8 @@ const Instructions = () => {
 
     const instructions = {
         0: null,
-        1: ['AI is entering a word.'],
-        2: ['AI\'s turn.'],
+        1: ['Robot is entering a word.'],
+        2: ['Robot\'s turn.'],
         3: penalty ? ['Use letters from the previous word to charge your',
             <><span>battery.  </span><span style={{ color: GOLD }}>Penalty for introducing new letters!</span></>] :
             ['Use letters from the previous word to earn charge your battery.'],

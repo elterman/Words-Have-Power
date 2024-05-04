@@ -1,5 +1,4 @@
 :root {
-  --app-color: #002242;
   --off-white: #ffffffb8;
   --blueish: #d9e2ffd8;
   --pink: #f77486;
@@ -12,7 +11,7 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--app-color);
+  background: #500000;
 }
 
 .body,

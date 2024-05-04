@@ -50,7 +50,7 @@ const Settings = () => {
             <div className='settings-divider' />
             <span className='settings-headers'>number of letters in the initial se-quence that must be different in the previous word</span>
             <div className='sub-settings'>
-                {_.map([0, 1, 2, 3], count => <ToolButton key={count} text={count} grayscale={count !== unrepeatCount}
+                {_.map([0, 1, 2, 3, 4, 5], count => <ToolButton key={count} text={count} grayscale={count !== unrepeatCount}
                     classes={count === unrepeatCount ? gradGold : ''}
                     style={{ ...style(count === unrepeatCount) }} onClick={() => setUnrepeatCount(count)} />)}
             </div>
@@ -64,7 +64,7 @@ const Settings = () => {
             </div>
             {false && <>
                 <div className='settings-divider' />
-                <span className='settings-headers'>AI's dictionary</span>
+                <span className='settings-headers'>Robot's dictionary</span>
                 <div className='sub-settings'>
                     {_.map([LIMITED, FULL], size => <ToolButton key={size} text={size} grayscale={size === dictSize ? 0 : 1}
                         classes={size === dictSize ? gradGold : ''}
